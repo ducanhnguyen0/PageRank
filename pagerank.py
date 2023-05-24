@@ -61,7 +61,7 @@ def transition_model(corpus, page, damping_factor):
     if len(corpus[page]) == 0:
 
         # Return the dictionary with equally probability distribution to each page in dictionary
-        return {p : (1 / len(corpus)) for p in corpus}
+        return {p: (1 / len(corpus)) for p in corpus}
 
     # Create dictionary for all pages in the corpus
     d = {}
@@ -93,7 +93,7 @@ def sample_pagerank(corpus, damping_factor, n):
     PageRank values should sum to 1.
     """
     # Create dictionary for all pages in corpus
-    d = {p : 0 for p in corpus}
+    d = {p: 0 for p in corpus}
 
     # Get the first sample randomly
     cur_sample = random.choice(list(corpus.keys()))
@@ -112,7 +112,7 @@ def sample_pagerank(corpus, damping_factor, n):
         next_sample_weight = list(next_sample_dict.values())
 
         # Get the next sample page
-        next_sample = random.choices(next_sample_population, weights = next_sample_weight, k = 1)[0]
+        next_sample = random.choices(next_sample_population, weights=next_sample_weight, k=1)[0]
 
         # Counting number of times page shown up
         d[next_sample] += 1
@@ -121,7 +121,7 @@ def sample_pagerank(corpus, damping_factor, n):
         cur_sample = next_sample
 
     # Return dictionary with page’s estimated PageRank (the proportion of all the samples that corresponded to that page)
-    return {p : (d[p] / n) for p in corpus}
+    return {p: (d[p] / n) for p in corpus}
 
 
 def iterate_pagerank(corpus, damping_factor):
@@ -134,10 +134,10 @@ def iterate_pagerank(corpus, damping_factor):
     PageRank values should sum to 1.
     """
     # Create dictionary for all pages in corpus and assign each page a rank of 1/N where N is the total number of pages in corpus
-    d = {p : (1 / len(corpus)) for p in corpus}
+    d = {p: (1 / len(corpus)) for p in corpus}
 
     # Create a dictionary to store new rank value after calculating with PageRank formula
-    new_d = {p : 0 for p in corpus}
+    new_d = {p: 0 for p in corpus}
 
     # Set PageRank value change
     pr_value_change = 0.002
