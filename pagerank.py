@@ -149,7 +149,7 @@ def iterate_pagerank(corpus, damping_factor):
         for p1 in corpus:
 
             # Set up summation variable for second condition of formula required calulating iteratively
-            sum = 0
+            summation = 0
 
             # Loop through every pages to consider any pages that links to current page
             for p2 in corpus:
@@ -158,16 +158,16 @@ def iterate_pagerank(corpus, damping_factor):
                 if p1 in corpus[p2]:
 
                     # Add up to second condition variable
-                    sum += (d[p2] / len(corpus[p2]))
+                    summation += (d[p2] / len(corpus[p2]))
 
                 # If p2 has no links
                 if len(corpus[p2]) == 0:
 
                     # Interpreted as having one link for every page in the corpus (including itself)
-                    sum += (d[p2] / len(corpus))
+                    summation += (d[p2] / len(corpus))
 
             # Calculate new rank value and update it to dictionary
-            new_d[p1] = ((1 - damping_factor) / len(corpus)) + (damping_factor * sum)
+            new_d[p1] = ((1 - damping_factor) / len(corpus)) + (damping_factor * summation)
 
         # Loop through each page to compare and check the page rank value change
         for page in corpus:
@@ -175,7 +175,7 @@ def iterate_pagerank(corpus, damping_factor):
             # Calculate rank value difference between new value and current value
             rank_value_change = abs(d[page] - new_d[page])
 
-            # Set variable to that value to keep the while loop then break the for loop
+            # Set variable to that value
             pr_value_change = rank_value_change
 
             # If the difference still larger than 0.001 then break the for loop to keep the while loop repeatedly calculating again
