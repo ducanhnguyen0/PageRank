@@ -33,13 +33,13 @@ We can also define a page’s PageRank using a recursive mathematical expression
 
 ## Project Specification:
 
-* transition_model
+### transition_model
 The transition_model should return a dictionary representing the probability distribution over which page a random surfer would visit next, given a corpus of pages, a current page, and a damping factor.
 
-* sample_pagerank
+### sample_pagerank
 The sample_pagerank function should accept a corpus of web pages, a damping factor, and a number of samples, and return an estimated PageRank for each page.
 
-* iterate_pagerank
+### iterate_pagerank
 The iterate_pagerank function should accept a corpus of web pages and a damping factor, calculate PageRanks based on the iteration formula described above, and return each page’s PageRank accurate to within 0.001.
 
 ## How to run
